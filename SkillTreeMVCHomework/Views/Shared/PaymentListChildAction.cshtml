@@ -1,0 +1,30 @@
+﻿@model IEnumerable<SkillTreeMVCHomework.Models.Payment>
+@{
+    Layout = "";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-bordered table-hover">
+            <tr>
+                <th>#</th>
+                <th>@Html.DisplayNameFor(model => model.moneyType)</th>
+                <th>@Html.DisplayNameFor(model => model.datetime)</th>
+                <th>@Html.DisplayNameFor(model => model.count)</th>
+            </tr>
+            @if (Model != null)
+            {
+                int rowNumber = 1;
+                foreach (var m in Model)
+                {
+                    <tr>
+                        <td>@(rowNumber++)</td>
+                        <td>@Html.DisplayFor(model => m.moneyType)</td>
+                        <td>@Html.DisplayFor(model => m.datetime)</td>
+                        <td>@Html.DisplayFor(model => m.count)</td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+</div>

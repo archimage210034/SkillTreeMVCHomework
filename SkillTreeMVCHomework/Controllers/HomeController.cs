@@ -1,7 +1,8 @@
-﻿using System;
+﻿using SkillTreeMVCHomework.Enum;
+using SkillTreeMVCHomework.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace SkillTreeMVCHomework.Controllers
@@ -10,7 +11,31 @@ namespace SkillTreeMVCHomework.Controllers
     {
         public ActionResult Index()
         {
+
+
+
+            //ViewData["paymentList"] = paymentList;
+
             return View();
+        }
+
+        [ChildActionOnly]
+        public ActionResult PaymentListChildAction()
+        {
+            Random r = new Random();
+            DateTime d = DateTime.Now;
+            IEnumerable<Payment> paymentList = Enumerable.Repeat(new Payment(), 100).Select(a =>
+            {
+                d = d.AddDays(r.Next(0, 3));
+                return new Payment()
+                {
+                    count = r.Next(1, 20) * 100,
+                    datetime = d,
+                    moneyType = (MoneyTypeEnum)(r.Next(1, 3))
+                };
+            });
+
+            return View(paymentList);
         }
 
         public ActionResult About()
