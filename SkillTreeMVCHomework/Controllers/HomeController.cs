@@ -11,18 +11,13 @@ namespace SkillTreeMVCHomework.Controllers
     {
         public ActionResult Index()
         {
-
-
-
-            //ViewData["paymentList"] = paymentList;
-
             return View();
         }
 
         [ChildActionOnly]
         public ActionResult PaymentListChildAction()
         {
-            Random r = new Random();
+            Random r = new Random(0);
             DateTime d = DateTime.Now;
             IEnumerable<Payment> paymentList = Enumerable.Repeat(new Payment(), 100).Select(a =>
             {
