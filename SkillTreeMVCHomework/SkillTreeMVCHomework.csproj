@@ -137,6 +137,7 @@
     </Compile>
     <Compile Include="Models\AccountBook.cs" />
     <Compile Include="Models\Payment.cs" />
+    <Compile Include="Models\PaymentService.cs" />
     <Compile Include="Models\SkillTreeHomeworkContent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

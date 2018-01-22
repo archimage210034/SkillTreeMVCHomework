@@ -1,15 +1,12 @@
-﻿using SkillTreeMVCHomework.Enum;
-using SkillTreeMVCHomework.Models;
-using System;
+﻿using SkillTreeMVCHomework.Models;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web.Mvc;
 
 namespace SkillTreeMVCHomework.Controllers
 {
     public class HomeController : Controller
     {
-        private SkillTreeHomeworkContent skillTreeHomeworkContent = new SkillTreeHomeworkContent();
+        private PaymentService paymentService = new PaymentService();
 
         public ActionResult Index()
         {
@@ -19,13 +16,7 @@ namespace SkillTreeMVCHomework.Controllers
         [ChildActionOnly]
         public ActionResult PaymentListChildAction()
         {
-            IEnumerable<Payment> paymentList = skillTreeHomeworkContent.AccountBook
-                .Select(x => new Payment()
-                {
-                    count = x.Amounttt,
-                    datetime = x.Dateee,
-                    moneyType = (MoneyTypeEnum)x.Categoryyy + 1
-                });
+            List<Payment> paymentList = paymentService.GetAllPaymentList();
 
             return View(paymentList);
         }
