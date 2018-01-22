@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SkillTreeMVCHomework.Repositories
 {
-    interface IRepository<T> where T : class
+    public interface IRepository<T> where T : class
     {
         IQueryable<T> GetAllList();
     }

@@ -5,7 +5,7 @@ namespace SkillTreeMVCHomework.Repositories
 {
     public class Repository<T> : IRepository<T> where T : class
     {
-        public DbContext DbContext { get; set; }
+        public IMyUnitOfWork UnitOfWork { get; set; }
 
         private DbSet<T> ObjectSet
         {
@@ -13,16 +13,16 @@ namespace SkillTreeMVCHomework.Repositories
             {
                 if (_objectset == null)
                 {
-                    _objectset = this.DbContext.Set<T>();
+                    _objectset = this.UnitOfWork.Context.Set<T>();
                 }
                 return _objectset;
             }
         }
         private DbSet<T> _objectset;
 
-        public Repository(DbContext dbContext)
+        public Repository(IMyUnitOfWork unitOfWork)
         {
-            this.DbContext = dbContext;
+            this.UnitOfWork = unitOfWork;
         }
 
         public IQueryable<T> GetAllList()
