@@ -12,8 +12,8 @@ namespace SkillTreeMVCHomework.Models
         public PaymentService()
         {
             IMyUnitOfWork _EFUnitOfWork = new EFUnitOfWork();
-            SkillTreeHomeworkContent skillTreeHomeworkContent = new SkillTreeHomeworkContent();
-            _accountBookRepository = new Repository<AccountBook>(_EFUnitOfWork);
+            _accountBookRepository = new SkillTreeDatabaseAccountBookRepository<AccountBook>(_EFUnitOfWork);
+            //_accountBookRepository = new RandomAccountBookRepository<AccountBook>();
         }
 
         public List<Payment> GetAllPaymentList()

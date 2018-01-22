@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace SkillTreeMVCHomework.Repositories
 {
-    public class Repository<T> : IRepository<T> where T : class
+    public class SkillTreeDatabaseAccountBookRepository<T> : IRepository<T> where T : class
     {
         public IMyUnitOfWork UnitOfWork { get; set; }
 
@@ -20,7 +20,7 @@ namespace SkillTreeMVCHomework.Repositories
         }
         private DbSet<T> _objectset;
 
-        public Repository(IMyUnitOfWork unitOfWork)
+        public SkillTreeDatabaseAccountBookRepository(IMyUnitOfWork unitOfWork)
         {
             this.UnitOfWork = unitOfWork;
         }
