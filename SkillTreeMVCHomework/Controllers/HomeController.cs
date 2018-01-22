@@ -17,16 +17,16 @@ namespace SkillTreeMVCHomework.Controllers
         [ChildActionOnly]
         public ActionResult PaymentListChildAction()
         {
-            Random r = new Random(0);
-            DateTime d = DateTime.Now;
+            Random random = new Random(0);
+            DateTime createDate = DateTime.Now;
             IEnumerable<Payment> paymentList = Enumerable.Repeat(new Payment(), 100).Select(a =>
             {
-                d = d.AddDays(r.Next(0, 3));
+                createDate = createDate.AddDays(random.Next(0, 3));
                 return new Payment()
                 {
-                    count = r.Next(1, 20) * 100,
-                    datetime = d,
-                    moneyType = (MoneyTypeEnum)(r.Next(1, 3))
+                    count = random.Next(1, 20) * 100,
+                    datetime = createDate,
+                    moneyType = (MoneyTypeEnum)(random.Next(1, 3))
                 };
             });
 

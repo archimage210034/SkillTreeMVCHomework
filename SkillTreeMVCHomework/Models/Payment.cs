@@ -15,6 +15,6 @@ namespace SkillTreeMVCHomework.Models
 
         [Display(Name = "金額")]
         [DisplayFormat(DataFormatString = "{0:N0}")]
-        public int count { get; set; }
+        public int count { get; set; } //應該使用更精準的型態 decimal，可是說好不改viewModel
     }
 }
