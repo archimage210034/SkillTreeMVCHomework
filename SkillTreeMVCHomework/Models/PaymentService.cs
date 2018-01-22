@@ -1,4 +1,5 @@
 ﻿using SkillTreeMVCHomework.Enum;
+using SkillTreeMVCHomework.Repositories;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -6,16 +7,17 @@ namespace SkillTreeMVCHomework.Models
 {
     public class PaymentService
     {
-        private SkillTreeHomeworkContent skillTreeHomeworkContent;
+        private readonly IRepository<AccountBook> _accountBookRepository;
 
         public PaymentService()
         {
-            skillTreeHomeworkContent = new SkillTreeHomeworkContent();
+            SkillTreeHomeworkContent skillTreeHomeworkContent = new SkillTreeHomeworkContent();
+            _accountBookRepository = new Repository<AccountBook>(skillTreeHomeworkContent);
         }
 
         public List<Payment> GetAllPaymentList()
         {
-            List<Payment> paymentList = skillTreeHomeworkContent.AccountBook
+            List<Payment> paymentList = _accountBookRepository.GetAllList()
                 .Select(x => new Payment()
                 {
                     count = x.Amounttt,
