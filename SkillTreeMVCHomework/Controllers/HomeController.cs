@@ -9,6 +9,8 @@ namespace SkillTreeMVCHomework.Controllers
 {
     public class HomeController : Controller
     {
+        private SkillTreeHomeworkContent skillTreeHomeworkContent = new SkillTreeHomeworkContent();
+
         public ActionResult Index()
         {
             return View();
@@ -17,18 +19,13 @@ namespace SkillTreeMVCHomework.Controllers
         [ChildActionOnly]
         public ActionResult PaymentListChildAction()
         {
-            Random random = new Random(0);
-            DateTime createDate = DateTime.Now;
-            IEnumerable<Payment> paymentList = Enumerable.Repeat(new Payment(), 100).Select(a =>
-            {
-                createDate = createDate.AddDays(random.Next(0, 3));
-                return new Payment()
+            IEnumerable<Payment> paymentList = skillTreeHomeworkContent.AccountBook
+                .Select(x => new Payment()
                 {
-                    count = random.Next(1, 20) * 100,
-                    datetime = createDate,
-                    moneyType = (MoneyTypeEnum)(random.Next(1, 3))
-                };
-            });
+                    count = x.Amounttt,
+                    datetime = x.Dateee,
+                    moneyType = (MoneyTypeEnum)x.Categoryyy + 1
+                });
 
             return View(paymentList);
         }
