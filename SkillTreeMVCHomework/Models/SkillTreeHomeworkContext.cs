@@ -5,10 +5,10 @@ namespace SkillTreeMVCHomework.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    public partial class SkillTreeHomeworkContent : DbContext
+    public partial class SkillTreeHomeworkContext : DbContext
     {
-        public SkillTreeHomeworkContent()
-            : base("name=SkillTreeHomeworkContent")
+        public SkillTreeHomeworkContext()
+            : base("name=SkillTreeHomeworkContext")
         {
         }
 

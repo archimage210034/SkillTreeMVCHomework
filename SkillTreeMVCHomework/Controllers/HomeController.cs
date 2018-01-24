@@ -6,7 +6,12 @@ namespace SkillTreeMVCHomework.Controllers
 {
     public class HomeController : Controller
     {
-        private PaymentService paymentService = new PaymentService();
+        private readonly IPaymentService _paymentService;
+
+        public HomeController(IPaymentService paymentService)
+        {
+            this._paymentService = paymentService;
+        }
 
         public ActionResult Index()
         {
@@ -16,7 +21,7 @@ namespace SkillTreeMVCHomework.Controllers
         [ChildActionOnly]
         public ActionResult PaymentListChildAction()
         {
-            List<Payment> paymentList = paymentService.GetAllPaymentList();
+            List<Payment> paymentList = _paymentService.GetAllPaymentList();
 
             return View(paymentList);
         }

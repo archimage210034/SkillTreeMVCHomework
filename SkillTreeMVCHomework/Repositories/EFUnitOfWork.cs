@@ -13,7 +13,7 @@ namespace SkillTreeMVCHomework.Repositories
 
         public EFUnitOfWork()
         {
-            Context = new SkillTreeHomeworkContent();
+            Context = new SkillTreeHomeworkContext();
         }
      
         public void Dispose()

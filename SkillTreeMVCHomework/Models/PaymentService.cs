@@ -5,15 +5,13 @@ using System.Linq;
 
 namespace SkillTreeMVCHomework.Models
 {
-    public class PaymentService
+    public class PaymentService : IPaymentService
     {
         private readonly IRepository<AccountBook> _accountBookRepository;
 
-        public PaymentService()
+        public PaymentService(IRepository<AccountBook> accountBookRepository)
         {
-            IMyUnitOfWork _EFUnitOfWork = new EFUnitOfWork();
-            _accountBookRepository = new SkillTreeDatabaseAccountBookRepository<AccountBook>(_EFUnitOfWork);
-            //_accountBookRepository = new RandomAccountBookRepository<AccountBook>();
+            this._accountBookRepository = accountBookRepository;
         }
 
         public List<Payment> GetAllPaymentList()
