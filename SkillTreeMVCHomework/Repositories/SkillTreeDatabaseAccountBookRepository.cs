@@ -25,7 +25,7 @@ namespace SkillTreeMVCHomework.Repositories
             this.UnitOfWork = unitOfWork;
         }
 
-        public IQueryable<T> GetAllList()
+        public IQueryable<T> GetAll()
         {
             return ObjectSet;
         }

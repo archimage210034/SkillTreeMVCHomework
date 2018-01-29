@@ -9,7 +9,7 @@ namespace SkillTreeMVCHomework.Repositories
 {
     public class RandomAccountBookRepository<T> : IRepository<AccountBook> where T : class
     {
-        public IQueryable<AccountBook> GetAllList()
+        public IQueryable<AccountBook> GetAll()
         {
             Random random = new Random(0);
             DateTime createDate = DateTime.Now;

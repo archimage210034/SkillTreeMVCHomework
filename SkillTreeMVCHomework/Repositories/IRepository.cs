@@ -9,6 +9,6 @@ namespace SkillTreeMVCHomework.Repositories
 {
     public interface IRepository<T> where T : class
     {
-        IQueryable<T> GetAllList();
+        IQueryable<T> GetAll();
     }
 }

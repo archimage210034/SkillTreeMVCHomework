@@ -16,7 +16,7 @@ namespace SkillTreeMVCHomework.Models
 
         public List<Payment> GetAllPaymentList()
         {
-            List<Payment> paymentList = _accountBookRepository.GetAllList()
+            List<Payment> paymentList = _accountBookRepository.GetAll()
                 .Select(x => new Payment()
                 {
                     count = x.Amounttt,
