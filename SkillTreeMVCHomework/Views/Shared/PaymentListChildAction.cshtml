@@ -1,4 +1,5 @@
-﻿@model IEnumerable<SkillTreeMVCHomework.Models.Payment>
+﻿@using SkillTreeMVCHomework.Enum
+@model IEnumerable<SkillTreeMVCHomework.Models.Payment>
 @{
     Layout = "";
 }
@@ -19,7 +20,7 @@
                 {
                     <tr>
                         <td>@(rowNumber++)</td>
-                        <td>@Html.DisplayFor(model => m.moneyType)</td>
+                        <td style="@(m.moneyType == MoneyTypeEnum.支出?"color : red;" : "color : blue;")">@Html.DisplayFor(model => m.moneyType)</td>
                         <td>@Html.DisplayFor(model => m.datetime)</td>
                         <td>@Html.DisplayFor(model => m.count)</td>
                     </tr>
