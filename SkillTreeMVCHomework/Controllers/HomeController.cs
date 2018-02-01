@@ -1,5 +1,7 @@
 ﻿using SkillTreeMVCHomework.Models;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Web.Mvc;
 
 namespace SkillTreeMVCHomework.Controllers
@@ -16,6 +18,30 @@ namespace SkillTreeMVCHomework.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult NewPayment(Payment newPayment)
+        {
+            if (ModelState.IsValid)
+            {
+                _paymentService.AddNewPaymentAndSave(newPayment);
+            }
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult NoteFeatureDateValid(string datetime)
+        {
+            if (datetime == null) return Json("「日期」未輸入", JsonRequestBehavior.AllowGet);
+            DateTime intputDateTime;
+            bool isConverSuccess = DateTime.TryParseExact(datetime, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out intputDateTime);
+
+            if (!isConverSuccess) return Json("「日期」格式錯誤(yyyy-MM-dd)或不存在", JsonRequestBehavior.AllowGet);
+
+            bool isDateNotAfterToday = intputDateTime <= DateTime.Now;
+
+            return Json(isDateNotAfterToday ? "true" : "「日期」不得大於今天",
+                JsonRequestBehavior.AllowGet); ;
         }
 
         [ChildActionOnly]

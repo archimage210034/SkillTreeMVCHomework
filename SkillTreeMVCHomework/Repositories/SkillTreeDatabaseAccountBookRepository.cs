@@ -29,5 +29,15 @@ namespace SkillTreeMVCHomework.Repositories
         {
             return ObjectSet;
         }
+
+        public void Add(T item)
+        {
+            ObjectSet.Add(item);
+        }
+
+        public void Save()
+        {
+            this.UnitOfWork.Context.SaveChanges();
+        }
     }
 }

@@ -1,14 +1,15 @@
-﻿using SkillTreeMVCHomework.Enum;
-using SkillTreeMVCHomework.Models;
+﻿using SkillTreeMVCHomework.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace SkillTreeMVCHomework.Repositories
 {
     public class RandomAccountBookRepository<T> : IRepository<AccountBook> where T : class
     {
+        public void Add(AccountBook item)
+        {
+        }
+
         public IQueryable<AccountBook> GetAll()
         {
             Random random = new Random(0);
@@ -26,6 +27,10 @@ namespace SkillTreeMVCHomework.Repositories
                 }).AsQueryable();
 
             return accountBooks;
+        }
+
+        public void Save()
+        {
         }
     }
 }
